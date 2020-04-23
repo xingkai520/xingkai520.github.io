@@ -16,7 +16,7 @@
 <meta property="og:description" content="Javascript基础">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-22T12:28:30.000Z">
-<meta property="article:modified_time" content="2020-04-23T11:02:31.119Z">
+<meta property="article:modified_time" content="2020-04-23T12:36:28.144Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="Javascript基础">
 <meta name="twitter:card" content="summary">
@@ -179,7 +179,7 @@
 <a id="more"></a>
 
 <meta name="referrer" content="no-referrer" />
-## **基本知识：**
+### **基本知识：**
 
 <ul>
 <li>控制浏览器弹出一个警告框</li>
@@ -275,7 +275,7 @@
 </ul>
 <blockquote>
 <ul>
-<li>String字符串</li>
+<li>String 字符串</li>
 </ul>
 <blockquote>
 <p>在Js中字符串需要使用引号引起来</p>
@@ -289,7 +289,7 @@
 
 <blockquote>
 <ul>
-<li>Number</li>
+<li>Number 数值</li>
 </ul>
 <blockquote>
 <p>在JS中所有数值都是Number类型，包括整数和浮点数（小数）</p>
@@ -308,11 +308,37 @@
 <p>在Js中整数的运算基本可以保证精确</p>
 <blockquote>
 <p>如果使用JS进行浮点元素的计算，可能的到一个不精确的解果；因为二进制无法精确1/10;</p>
-<p>可以把后面的数字给省略掉但前提是不能涉及到钱，所以不要用JS计算精确度要求比较高的运算</p>
+<p>可以把后面的数字给省略掉，但前提是不能涉及到钱，所以不要用JS计算精确度要求比较高的运算</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;<span class="comment">//数字123</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"123"</span>;<span class="comment">//字符123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)<span class="comment">//检查字符串时，会返回string；检查数值时，会返回number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_VALUE);</span><br><span class="line">a = <span class="built_in">Number</span>.MAX_VALUE*<span class="built_in">Number</span>.MAX_VALUE;<span class="comment">//会输出Infinity，</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">"abc"</span>*<span class="string">"bcd"</span><span class="comment">//输出NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)<span class="comment">//会输出number</span></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">Number</span>.MIN_VALUE</span><br><span class="line"><span class="built_in">console</span>.log(a)<span class="comment">//输出5e-324</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">1234456</span> + <span class="number">4894894</span>;<span class="comment">//输出结果正确</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">0.1</span> + <span class="number">0.2</span>;<span class="comment">//输出结果为0.30000000000000000004</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Boolean 布尔值</li>
+</ul>
+<blockquote>
+<p>布尔值只有两个：true、false；真、假。主要用来做逻辑判断</p>
+<p>true：表示真</p>
+<p>false：表示假</p>
+<p>使用typeof检查会输出boolean</p>
+</blockquote>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bool = ture;</span><br><span class="line"><span class="built_in">console</span>.log(bool);<span class="comment">//输出为true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> bool)<span class="comment">//输出为boolean</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Null类型的值只有一个，就是Null</li>
+</ul>
+<blockquote>
+<p>null（空值）专门用来表示为空的对象</p>
+<p>使用typeof检查null会返回Object</p>
+<p>Undefined（未定义）类型的值只有一个，就是Undefined</p>
+<p>当声明一个变量，但是不给变量赋值时，他的值就是Undefined</p>
+</blockquote>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//输出就是null</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a);<span class="comment">//输出是Object</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);<span class="comment">//输出是undefined</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -573,11 +599,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">标签</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,7 +607,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">标签</a>
               </li>
             
             <div class="clearfix"></div>
