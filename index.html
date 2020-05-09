@@ -172,41 +172,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前写代码模式：<br>  创建一个文件夹<br>  在这个文件夹下开始写代码</p>
-<p>之前写代码的模式缺点：<br>  1）没有版本   开发一个项目  v1 v2 v3 v4<br>  2）不好管理 不好维护 团队协作开发时</p>
-<p>git是什么？<br>  git是一个非常优秀的版本控制系统，两个作用：<br>  1）版本控制<br>  2）协作开发 协作开发也是基于版本控制</p>
+        <p>git是什么？<br>  git是一个非常优秀的版本控制系统，两个作用：<br>  1）版本控制<br>  2）协作开发 协作开发也是基于版本控制</p>
 <p>  git是用来管理你写的代码的。</p>
-<p>-————————————<br>git历史？<br>  大家自己百度一下</p>
-<p>-————————————<br>现在版本控制系统有哪些？<br>  1）svn 集中式版本控制系统<br>  2）git 分布式版本控制系统</p>
-<p>-————————————<br>集中式版本控制系统？ 代表就是SVN 有点out了  就不讲了<br>  只有一个远程的代码仓库，所有的程序员都维护这一个代码仓库。</p>
-<p>  不足：<br>    1）如果远程仓库挂了，所有的版本都没有了<br>    2）svn推送或拉取最新版本是基于文件传输的，速度比较慢一点<br>    3）所有的版本都存储在远程仓库，每个程序员手头只有最新的版本，没有历史版本，进行版本管理时，不太好管理</p>
-<p>-————————————<br>分布式版本控制系统？ 代表就是git 现在用的非常多 在公司中每天都会用到<br>  每一个程序员电脑上都有一个仓库，叫它为本地仓库。</p>
-<p>  优点：<br>    1）如果远程仓库挂了，程序员手头还有所有的版本，数据不会丢失<br>    2）是基于文件流进行传输的，速度快一点<br>    3）所有程序员手头都所有的版本，代码管理起非常方便</p>
-<p>-————————————<br>github 和 git 有什么区别？<br>  1）git是一个管理代码的工具<br>  2）github是一个网站  可以充当一个远程仓库 这个网址是程序员的聚集地</p>
-<p>-————————————<br>安装git这个工具：<br>  直接百度搜索git  找到官网  下载这个工具<br>  安装是傻瓜式安装 一路下一步 下一步就OK了</p>
-<p>  在使用git bash here时，你在哪个文件夹下点击了，它会自动定位到这个文件夹</p>
-<p>-————————————<br>安装完后，还需要告诉git你是谁？<br>  答：就是配置用户名和邮箱  最好是你先去注册一个github账号</p>
-<p>  注册完github账号后，你就有用户名和邮箱了</p>
-<p>  git config –global user.name “wangcai”<br>  git config –global user.email “<a href="mailto:1234567890@qq.com">1234567890@qq.com</a>“</p>
-<p>  设置用户名和邮箱只需要做一次就OK了。</p>
-<p>-————————————<br>常用的linux命令：<br>  ls 罗列出当前文件夹下面都有哪些文件或目录<br>  mkdir css 表示在当前目录下面创建一个css文件夹<br>  touch index.html 表示创建一个index.html文件<br>  cd css 表示进入到css文件夹中  可以按tab键自动补全<br>  cd ..  表示回到上一级目录<br>  pwd  查看当前处理哪个目录下面（得到全路径）<br>  clear 清屏<br>  rm index.html 表示删除一个文件<br>  rmdir css 表示删除一个空的文件夹<br>  …..</p>
-<p>-————————————<br>本地仓库：<br>  一个空的文件夹，并不是一个本地仓库。</p>
-<p>如何得到一个本地仓库呢？<br>  答：通过一个命令就可以得到本地仓库，叫git init </p>
-<p>如果在一个文件夹（xxx）中通过git init命令创建出来了一个.git隐藏文件夹，<br>那么这个文件夹(xxx)就是一个本地仓库了。</p>
-<p>-————————————<br>一个本地仓库是由几块区域组成：<br>  1）工作区(.git之外的区域)<br>  2）.git  .git里面又包含两块区域 一块叫暂存区  一块叫历史区  </p>
-<p>  .git文件夹，任何时候都不要动</p>
-<p>  写代码都在工作区进行写代码。</p>
-<p>-————————————<br>工作区：<br>  就是程序员写代码的区域  只在工作区写代码  并不能形成版本</p>
-<p>只有把代码扔到历史区，才能形成版本，但是你还不能直接把工作区的代码扔到历史区，<br>你需要先把代码扔到暂存区，然后再从暂存区扔到历史区，形成版本。</p>
-<p>-————————————<br>查看历史区都有哪些版本？<br>  答：git log  </p>
-<p>-————————————<br>git常用命令：<br>  1）git init 初始化一个本地仓库<br>  2）git add * 把工作区的代码扔到暂存区<br>  3）git commit -m ‘xx’ 把暂存区的代码扔到历史区形成一个版本<br>  4）git log 查看历史区都有哪些版本</p>
-<p>-————————————<br>查看文件状态：<br>  git status</p>
-<p>  红色：代表当前工作区的文件并没有扔到暂存区<br>  绿色：代表没有把暂存区的文件扔到历史区</p>
-<p>-————————————<br>回滚：<br>  回到之前的版本<br>  git reset –hard HEAD^  表示回到上一个版本  HEAD^^表示回到上上一个版本</p>
-<p>-————————————<br>查看带有回滚的历史区版本的信息：<br>  之前git log，只能查看当前历史区的版本，不带回滚的信息<br>  现在git reflog，可看带有回滚版本的信息</p>
-<p>-————————————<br>总结：<br>  1）git init 初始化本地仓库<br>  2）配置用户名和邮箱<br>    git config –global user.name “wangcai”<br>    git config –global user.email “<a href="mailto:1234567890@qq.com">1234567890@qq.com</a>“<br>  3）git add<br>  4）git commit -m “xx”<br>  5）git log  /  git reflog<br>  6）git reset –hard HEAD^/id 后悔药<br>  7）git status 红色  绿色 </p>
-<p>  什么分布式  什么是集中式<br>-————————————</p>
-
+        
+          <a class="article-more-a" href="/2020/05/09/git%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
       
 
       
@@ -725,82 +695,6 @@
 
 
   
-    <article id="post-模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/">标题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/05/%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-04-05T12:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>标题</strong></p>
-        
-          <a class="article-more-a" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">标签</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-我的第一个博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -848,6 +742,82 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/">标题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/05/%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2020-04-05T12:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>标题</strong></p>
+        
+          <a class="article-more-a" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">标签</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/05/%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
         </p>
       
 
@@ -978,15 +948,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">标签</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,6 +961,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">标签</a>
               </li>
             
             <div class="clearfix"></div>
