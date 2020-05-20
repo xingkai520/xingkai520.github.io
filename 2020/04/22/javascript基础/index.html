@@ -16,7 +16,7 @@
 <meta property="og:description" content="Javascript基础">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-22T12:28:30.000Z">
-<meta property="article:modified_time" content="2020-04-29T10:00:17.054Z">
+<meta property="article:modified_time" content="2020-05-20T08:46:24.251Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="Javascript">
 <meta name="twitter:card" content="summary">
@@ -241,6 +241,22 @@
 
 <p>可以声明和赋值同时进行</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">846815</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="变量声明提前"><a href="#变量声明提前" class="headerlink" title="变量声明提前"></a><strong>变量声明提前</strong></h5><ul>
+<li><p>使用var关键字声明的变量，会在所有的代码执行之前被声明(但是不会赋值)</p>
+<p>但是声明变量时不使用var关键字，则变量不会被声明提前</p>
+</li>
+<li><p>函数的声明提前</p>
+<p>使用函数声明形式创建的函数function函数(){}</p>
+<p>他会在所有的代码执行之前就被创建，所以这种方式写的函数可以在函数声明前来调用</p>
+<p>使用函数表达式创建的函数，不会被声明提前</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//输出 a = 123;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//输出 a=undefined  没有报错</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//报错</span></span><br><span class="line">a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">fun();<span class="comment">//输出我是一个fun函数</span></span><br><span class="line">fun2();<span class="comment">//报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"我是一个fun函数"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"我是fun2函数"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a><strong>标识符</strong></h4><p>在js中所有的可以由我们自主命名的都可以称为是标识符</p>
 <p>例如：变量名、函数名、属性名都属于标识符</p>
@@ -893,15 +909,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -909,11 +921,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">

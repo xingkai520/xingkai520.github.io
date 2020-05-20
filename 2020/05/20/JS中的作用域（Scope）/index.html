@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xingkai520.github.io">
-  <title>Tag: git | Hexo</title>
+  <title>JS中的作用域（Scope） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://xingkai520.github.io/tags/git/index.html">
+  <meta name="description" content="作用域 作用域指一个变量的作用范围  在JS中有两种作用域 1.全局作用域 2.函数作用域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中的作用域（Scope）">
+<meta property="og:url" content="https://xingkai520.github.io/2020/05/20/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作用域 作用域指一个变量的作用范围  在JS中有两种作用域 1.全局作用域 2.函数作用域">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-20T08:07:55.000Z">
+<meta property="article:modified_time" content="2020-05-20T09:35:05.726Z">
 <meta property="article:author" content="xingkai">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,60 +155,211 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JS中的作用域（Scope）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/09/git%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-05-09T02:08:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/09/git%E5%9F%BA%E7%A1%80/">git基础</a>
+    <h1 class="article-title" itemprop="name">
+      JS中的作用域（Scope）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/20/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-05-20T08:07:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a><strong>作用域</strong></h4><ul>
+<li><p>作用域指一个变量的作用范围</p>
+</li>
+<li><p>在JS中有两种作用域</p>
+<p>1.全局作用域</p>
+<p>2.函数作用域</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h5 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a><strong>全局作用域</strong></h5><p>   直接编写在script标签中的js代码，都在全局作用域</p>
+<p>   全局作用域在页面打开时创建，在页面关闭时销毁</p>
+<p>   在全局作用域中，有一个全局对象window，我们可以直接使用</p>
+<p>​            他代表的是一个浏览器端口，他由浏览器创建，可以直接在浏览器中使用</p>
+<p>   在全局作用域中，</p>
+<p>​            创建的变量都会作为window对象的属性保存</p>
+<p>​            创建的函数都会作为window对象的方法保存</p>
+<p>   全局作用域中的变量都是全局变量</p>
+<p>​            在页面的任意部分都可以访问的到</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>);<span class="comment">//输出   [object window]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//输出  10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"我是fun函数"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.fun()<span class="comment">//输出 我是fun函数</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.alert(<span class="string">"hello"</span>);<span class="comment">//输出hello</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a><strong>函数作用域</strong></h5><ul>
+<li>调用函数时创建函数作用域，函数执行完毕之后，函数作用域销毁</li>
+<li>每调用一次函数都会创建一个新的函数作用域，他们之间是相互独立的</li>
+<li>在函数作用域中可以访问到全局作用域的变量，在全局作用域中无法访问到函数作用域的变量</li>
+<li>当在函数作用域中操作一个变量时，他会先在自身作用域中寻找，如果有就直接使用，如果没有则向上一级作用域中找，如果到全局作用域中也找不到就会报错</li>
+<li>函数中要访问全局变量要使用window函数</li>
+<li>在函数作用域中也有声明提前的特性</li>
+<li>函数声明也会在函数所有代码执行之前执行</li>
+<li>定义形参就相当于在函数作用域中声明了变量</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">"我是fun函数中的a"</span></span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//输出  我是fun函数中的a</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//输出   我是fun函数中的a</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">window</span>.a)<span class="comment">//输出   10</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line">fun();<span class="comment">//输出10</span></span><br><span class="line">fun();</span><br><span class="line">fun();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> e = <span class="number">23</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun6</span>(<span class="params">e</span>)</span>&#123;<span class="comment">//相当于在函数中var e</span></span><br><span class="line">    alert(e);</span><br><span class="line">&#125;</span><br><span class="line">fun();<span class="comment">//输出undefined</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zfb.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xingkai520.github.io/2020/05/20/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/20/this/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">this</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +382,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
