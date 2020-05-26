@@ -16,7 +16,7 @@
 <meta property="og:description" content="函数 函数也是一个对象 函数中可以装一些功能（代码），在需要时可以执行这些功能（代码）">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-14T06:10:09.000Z">
-<meta property="article:modified_time" content="2020-05-16T03:56:52.735Z">
+<meta property="article:modified_time" content="2020-05-26T08:44:40.434Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -207,10 +207,31 @@
 
 
 
+<h5 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><strong>构造函数</strong></h5><p>可以创建一个构造函数专门用来创建person对象的，构造函数就是一个普通的含数，创建方式和普通函数没有区别，不同的是构造函数习惯上首字母大写</p>
+<p>构造函数和普通函数的区别就是调用方式的不同</p>
+<p>普通函数是直接调用，而构造函数需要使用new关键字来使用</p>
+<p>构造函数的执行流程</p>
+<p>1.立刻创建一个新的对象</p>
+<p>2.将新建的对象设置为函数中this，在构造函数中可以使用this来引用新建对象</p>
+<p>3.逐行执行函数中的代码</p>
+<p>4.将新建的对象作为返回值返回</p>
+<p>使用同一个同一个构造函数创建的对象，我们称为一类对象，也将一个构造函数称为一个类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name<span class="string">"孙悟空"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(per)<span class="comment">//输出不在是Object&#123;孙悟空&#125;而是person&#123;孙悟空&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(per <span class="keyword">instanceof</span> person);<span class="comment">//使用instanceof可以检查一个对象是否是一个类的实例，是true，否false，所有的对象都是Object的后代，所以检查是否是Object类时全是true</span></span><br></pre></td></tr></table></figure>
 
 
 
 
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name , age , gender</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per2 = <span class="keyword">new</span> Person(<span class="string">"猪八戒"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> per3 = <span class="keyword">new</span> Person(<span class="string">"沙和尚"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> per4 = <span class="keyword">new</span> Person(<span class="string">"唐僧"</span> , <span class="number">38</span> , <span class="string">"男"</span>);</span><br><span class="line"></span><br><span class="line">obj2.sayName();</span><br><span class="line">obj4.sayName();</span><br><span class="line"><span class="built_in">console</span>.log(per2.sayName == per4.sayName);<span class="comment">//输出false说明这两个sayName方法是独立创建的</span></span><br></pre></td></tr></table></figure>
+
+<p>在person构造函数中，为每一个对象都添加了一个sayName的方法</p>
+<p>目前我们的方法是在构建函数内部创建的，也就是构造函数每执行一次就会创建一个新的sayName方法</p>
+<p>也就是所有实例的sayName都是唯一的</p>
+<p>这样就导致了构建函数执行一次就会创建一个新方法，执行100000次就会创建100000个新方法，而100000个方法都是一模一样的，这是完全没有必要的，完全可以使所有的对象共享用一个方法</p>
+<p><strong>将sayName方法在全局作用域中定义</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name , age , gender</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;</span><br><span class="line">    <span class="keyword">this</span>.sayName = fun;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per2 = <span class="keyword">new</span> Person(<span class="string">"猪八戒"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> per3 = <span class="keyword">new</span> Person(<span class="string">"沙和尚"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> per4 = <span class="keyword">new</span> Person(<span class="string">"唐僧"</span> , <span class="number">38</span> , <span class="string">"男"</span>);</span><br><span class="line"></span><br><span class="line">per2.sayName();</span><br><span class="line">per4.sayName();</span><br><span class="line"><span class="built_in">console</span>.log(per2.sayName == per4.sayName);<span class="comment">//输出true，说明这两个sayName方法是共用的</span></span><br></pre></td></tr></table></figure>
+
+<p>将函数定义在全局作用域中会占用全局作用域的命名空间，而且定义在全局作用域中也很不安全。尽量不要在全局作用域中定义函数</p>
 <h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a><strong>调用函数</strong></h5><p>语法： 函数对象（）</p>
 <p>当调用函数时，函数中封装的代码会按照顺序执行</p>
 <p>函数对象含有普通对象的一切功能（添加、删除、修改…..）</p>
@@ -537,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
               </li>
              
               <li class="article-tag-list-item">

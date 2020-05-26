@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/4.jpg">
 <meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/4.jpg">
 <meta property="article:published_time" content="2020-05-12T13:32:31.000Z">
-<meta property="article:modified_time" content="2020-05-16T03:54:20.434Z">
+<meta property="article:modified_time" content="2020-05-26T09:13:30.241Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -225,7 +225,7 @@
 <h5 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a><strong>自定义对象</strong></h5><ul>
 <li>创建对象</li>
 </ul>
-<p>使用new关键字调用的函数，是构造函数constructor，构造函数是专门用来创建对象的函数</p>
+<p><strong>1、使用new关键字调用的函数，是构造函数constructor，构造函数是专门用来创建对象的函数</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);<span class="comment">//返回Object</span></span><br></pre></td></tr></table></figure>
 
 <p>在对象中保存的值称为属性，向对象中添加属性</p>
@@ -234,11 +234,34 @@
 
 
 
-<p>使用对象字面量来创建一个对象（使用对象字面量可以在创建对象时，直接指定对象中的属性）</p>
+<p><strong>2、使用对象字面量来创建一个对象（使用对象字面量可以在创建对象时，直接指定对象中的属性）</strong></p>
 <p>对象字面量的属性名可以加引号也可以不加引号，建议不加。</p>
 <p>如果要使用一些特殊的名字则必须加引号“！@￥#@……”</p>
 <p>语法：{属性名：属性值，属性名：属性值，…..}</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);<span class="comment">//输出object</span></span><br><span class="line">obj.name = <span class="string">"孙悟空"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.name);<span class="comment">//输出孙悟空</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">            name:<span class="string">"猪八戒"</span>,</span><br><span class="line">            age:<span class="number">28</span>,</span><br><span class="line">            gender:<span class="string">"男"</span></span><br><span class="line">           &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">//输出   猪八戒  28   男</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3、使用工厂方法创建对象</strong></p>
+<p>通过该方法可以大批量的创造对象</p>
+<p>使用工厂方法创建的对象使用的构造函数都是Object，所以创建的对象都是Object这个类型，就导致我们无法区分出多个不同类型的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name , age , gender</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.age = age;</span><br><span class="line">    obj.gender = gender;</span><br><span class="line">    obj.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = createPerson(<span class="string">"猪八戒"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> obj3 = createPerson(<span class="string">"沙和尚"</span> , <span class="number">28</span> , <span class="string">"男"</span>);</span><br><span class="line"><span class="keyword">var</span> obj4 = createPerson(<span class="string">"唐僧"</span> , <span class="number">38</span> , <span class="string">"男"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">//输出猪八戒</span></span><br><span class="line">obj4.sayName();<span class="comment">//输出唐僧</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>构造函数</strong></p>
+<p>可以创建一个构造函数专门用来创建person对象的，构造函数就是一个普通的含数，创建方式和普通函数没有区别，不同的是构造函数习惯上首字母大写</p>
+<p>构造函数和普通函数的区别就是调用方式的不同</p>
+<p>普通函数是直接调用，而构造函数需要使用new关键字来使用</p>
+<p>构造函数的执行流程</p>
+<p>1.立刻创建一个新的对象</p>
+<p>2.将新建的对象设置为函数中this，在构造函数中可以使用this来引用新建对象</p>
+<p>3.逐行执行函数中的代码</p>
+<p>4.将新建的对象作为返回值返回</p>
+<p>使用同一个同一个构造函数创建的对象，我们称为一类对象，也将一个构造函数称为一个类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name<span class="string">"孙悟空"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(per)<span class="comment">//输出不在是Object&#123;孙悟空&#125;而是person&#123;孙悟空&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(per <span class="keyword">instanceof</span> person);<span class="comment">//使用instanceof可以检查一个对象是否是一个类的实例，是true，否false，所有的对象都是Object的后代，所以检查是否是Object类时全是true</span></span><br></pre></td></tr></table></figure>
+
+
+
+
 
 
 
@@ -314,6 +337,17 @@
 <p>for…in语句 对象中有几个属性，循环体就会执行几次</p>
 <p>每次执行时会将对象中一个属性的名字赋值给变量</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语法</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> 变量 <span class="keyword">in</span> 对象)&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">            name:<span class="string">"孙悟空"</span>,</span><br><span class="line">            age:<span class="number">18</span>,</span><br><span class="line">            gender:<span class="string">"男"</span></span><br><span class="line">            address:<span class="string">"花果山"</span></span><br><span class="line">           &#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> n <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"hello"</span>);<span class="comment">//输出四次hello，因为obj对象中只有三个属性</span></span><br><span class="line">    <span class="built_in">console</span>.log(n);<span class="comment">//输出name    age     gender     address</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj[n]);<span class="comment">//输出孙悟空  18  男  花果山</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a><strong>原型prototype</strong></h5><p>我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype</p>
+<p>这个属性对应着一个对象，这个对象就是我们所谓的原型对象</p>
+<p>如果函数作为普通函数调用prototype没有任何作用</p>
+<p>当函数以构造函数的形式调用时，他所创建的对象中都会有一个隐含得属性，指向该构造函数的原型对象，我们可以通过<strong>__</strong>proto__来访问该属性</p>
+<p>原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，我们可以将对象中共有的内容，统一设置到原型对象中</p>
+<p>当我们访问对象的一个属性或方法时，他会先在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找，如果有会直接使用</p>
+<p>以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，作用不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向MyClass的原型中添加属性a</span></span><br><span class="line">MyClass.prototype.a = <span class="number">123</span>;</span><br><span class="line">MyClass.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"hello"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> MyClass();</span><br><span class="line"><span class="keyword">var</span> mc2 = <span class="keyword">new</span> MyClass();</span><br><span class="line"><span class="built_in">console</span>.log(mc.__proto__ == MyClass.prototype);<span class="comment">//输出true</span></span><br><span class="line"><span class="built_in">console</span>.log(mc.a);<span class="comment">//输出123</span></span><br><span class="line">mc.a = <span class="string">"我是mc中的a"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(mc.a);<span class="comment">//输出我是mc中的a</span></span><br><span class="line"><span class="built_in">console</span>.log(mc2.a);<span class="comment">//输出123</span></span><br><span class="line">mc.sayName();<span class="comment">//输出hello</span></span><br><span class="line">mc2.sayName();<span class="comment">//输出hello</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -582,11 +616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
               </li>
              
               <li class="article-tag-list-item">
