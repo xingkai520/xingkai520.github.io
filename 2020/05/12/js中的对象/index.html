@@ -23,8 +23,10 @@
 <meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/3.jpg">
 <meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/4.jpg">
 <meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/4.jpg">
+<meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/5.jpg">
+<meta property="og:image" content="https://xingkai520.github.io/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/5.jpg">
 <meta property="article:published_time" content="2020-05-12T13:32:31.000Z">
-<meta property="article:modified_time" content="2020-05-26T09:13:30.241Z">
+<meta property="article:modified_time" content="2020-05-28T11:12:17.259Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -222,6 +224,106 @@
 </li>
 </ul>
 <p>ps:对象就像一个塑料袋！！</p>
+<h5 id="内建对象"><a href="#内建对象" class="headerlink" title="内建对象"></a><strong>内建对象</strong></h5><h6 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a><strong>数组（Array）</strong></h6><ul>
+<li><p>数组也是一个对象</p>
+</li>
+<li><p>他和我们普通的对象功能相似，也是用来存储一些值的</p>
+</li>
+<li><p>不同的是普通对象是使用字符串作为属性名的，而数组是使用数字作为索引来操作对象</p>
+</li>
+<li><p>索引：</p>
+<p>从零开始的整数就是索引</p>
+</li>
+<li><p>数组的存储性能比普通对象要好，在开发中我们经常使用数组来储存一些数据</p>
+</li>
+</ul>
+<p><strong>创建数组对象</strong></p>
+<p><strong>语法：</strong>数组[索引] = 值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出""  空的，因为里面没有元素</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">33</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出10,33</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用字面量创建数组</strong></p>
+<p><strong>语法：</strong>[]</p>
+<p>使用字面量创建数组时，可以在创建时就指定数组中的元素</p>
+<p>使用构造函数创建数组时，也可以同时添加元素，将要添加的元素作为构造函数参数传递，元素之间用，隔开</p>
+<p>当只传一个数时，字面量传的是一个元素而构造函数传的是数组的元素数量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//返回值为空（没有设置元素）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">10</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">4</span>]);<span class="comment">//返回值为10 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr2);<span class="comment">//返回值为10,220,30（与上面的方法效果一样）</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p><strong>引用数组对象</strong></p>
+<p><strong>语法：</strong>数组[索引]</p>
+<p>如果读取不存在的索引，不会报错而是返回undefined</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">33</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">1</span>]);<span class="comment">//输出33</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>获取对象长度</strong></p>
+<p>可以使用length属性来获取数组的长度</p>
+<p>对于连续的数组使用length可以获取到数组的长度（元素个数）</p>
+<p>对于非连续的数组，使用length会获取到数组的最大索引+1</p>
+<p>尽量不要创建非连续的数组，占空间</p>
+<p><strong>语法：</strong>数组.length</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">33</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出2</span></span><br><span class="line">arr[<span class="number">10</span>] = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出11</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//[ 10, 33, &lt;8 empty items(8个空的项目)&gt;, 50 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>修改length</strong></p>
+<p>如果修改的length大于原长度，则多余部分会空出来</p>
+<p>如果修改的length小于原长度，则多出部分会被删除</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">11</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">22</span>;</span><br><span class="line">arr[<span class="number">3</span>] = <span class="number">33</span>;</span><br><span class="line">arr.length = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出10</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//输出[ 10, 11, 22, 33, &lt;6 empty items&gt; ]</span></span><br><span class="line">arr.length = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//输出10,11</span></span><br></pre></td></tr></table></figure>
+
+<p>向最后的一个位置添加元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">11</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">22</span>;</span><br><span class="line">arr[<span class="number">3</span>] = <span class="number">33</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出4</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//输出10,11,22,33</span></span><br><span class="line">arr[arr.length] = <span class="number">44</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">//输出5</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//输出10,11,22,33,44</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>数组中的元素可以是任意的数据类型</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr = [<span class="string">"hello"</span>,<span class="literal">true</span>,<span class="literal">null</span>,<span class="literal">undefined</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr)<span class="comment">//输出hello，1，true， ，</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以是对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"孙悟空"</span>&#125;;</span><br><span class="line">arr[arr.length] = obj;</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">5</span>].name);<span class="comment">//输出孙悟空</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以是个函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr = [<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">2</span>)&#125;];</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出function()&#123;alert(1)&#125;,function()&#123;alert(2)&#125;</span></span><br><span class="line">arr[<span class="number">0</span>]();<span class="comment">//弹出1</span></span><br></pre></td></tr></table></figure>
+
+<p>数组中也可以放数组，如下这种数组叫二维数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">0</span>]);<span class="comment">//输出1，2,3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>push（）</strong></p>
+<ul>
+<li>该方法可以向数组的末尾添加一个或多个元素，并返回数组的新的长度</li>
+<li>可以将要添加的元素作为方法的参数传递，这样这些元素将会自动添加到数组的末尾</li>
+<li>该方法会将数组的新长度作为返回值返回</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"孙悟空"</span>,<span class="string">"猪八戒"</span>,<span class="string">"沙和尚"</span>];</span><br><span class="line">arr.push(<span class="string">"唐僧"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出孙悟空，猪八戒，沙和尚，唐僧</span></span><br><span class="line">arr.push(<span class="string">"蜘蛛精"</span>,<span class="string">"白骨精"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出孙悟空，猪八戒，沙和尚，唐僧，蜘蛛精,白骨精</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"孙悟空"</span>,<span class="string">"猪八戒"</span>,<span class="string">"沙和尚"</span>];</span><br><span class="line"><span class="keyword">var</span> result = arr.push(<span class="string">"蜘蛛精"</span>,<span class="string">"白骨精"</span>,<span class="string">"唐僧"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出孙悟空，猪八戒，沙和尚，唐僧，蜘蛛精,白骨精</span></span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//输出  6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>unshift()</strong></p>
+<ul>
+<li>向数组开头添加一个或多个元素，并返回新的数组长度。</li>
+<li>像前面插入元素以后，其他元素会依次往后推</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"孙悟空"</span>,<span class="string">"猪八戒"</span>,<span class="string">"沙和尚"</span>];</span><br><span class="line"><span class="keyword">var</span> result = arr.push(<span class="string">"蜘蛛精"</span>,<span class="string">"白骨精"</span>,<span class="string">"唐僧"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line">arr.unshift(<span class="string">"牛魔王"</span>,<span class="string">"二郎神"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//输出  牛魔王,孙悟空，猪八戒，沙和尚，唐僧，蜘蛛精,白骨精</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>pop()  shift()</strong></p>
+<ul>
+<li>pop();    删除数组最后一个元素，并返回元素的值</li>
+<li>shift()；删除数组第一个元素，并返回元素的值</li>
+</ul>
+<p><strong>数组的遍历</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">"孙悟空"</span>,<span class="string">"猪八戒"</span>,<span class="string">"沙和尚"</span>];</span><br><span class="line"><span class="keyword">var</span> result = arr.push(<span class="string">"蜘蛛精"</span>,<span class="string">"白骨精"</span>,<span class="string">"唐僧"</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; arr.length ; i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr[i]);<span class="comment">//输出孙悟空，猪八戒，沙和尚，唐僧，蜘蛛精,白骨精</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <h5 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a><strong>自定义对象</strong></h5><ul>
 <li>创建对象</li>
 </ul>
@@ -348,6 +450,21 @@
 <p>当我们访问对象的一个属性或方法时，他会先在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找，如果有会直接使用</p>
 <p>以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，作用不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向MyClass的原型中添加属性a</span></span><br><span class="line">MyClass.prototype.a = <span class="number">123</span>;</span><br><span class="line">MyClass.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"hello"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> MyClass();</span><br><span class="line"><span class="keyword">var</span> mc2 = <span class="keyword">new</span> MyClass();</span><br><span class="line"><span class="built_in">console</span>.log(mc.__proto__ == MyClass.prototype);<span class="comment">//输出true</span></span><br><span class="line"><span class="built_in">console</span>.log(mc.a);<span class="comment">//输出123</span></span><br><span class="line">mc.a = <span class="string">"我是mc中的a"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(mc.a);<span class="comment">//输出我是mc中的a</span></span><br><span class="line"><span class="built_in">console</span>.log(mc2.a);<span class="comment">//输出123</span></span><br><span class="line">mc.sayName();<span class="comment">//输出hello</span></span><br><span class="line">mc2.sayName();<span class="comment">//输出hello</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/5.jpg" alt=""><img src="/2020/05/12/js%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1/5.jpg" class="" width="1"></p>
+<p>使用in检查对象中是否含有某个属性时，如果对象中没有但原型中有，也会返回true</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">MyClass.prototype.name = <span class="string">"我是原型中的名字"</span>;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> MyClass();</span><br><span class="line">mc.age = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(mc.name);<span class="comment">//返回true</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用对象的hasOwnProperty()来检查对象自身是否含有属性，自身中含有该属性时返回true</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MyClass.prototype.name = <span class="string">"我是原型中的名字"</span>;</span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> MyClass();</span><br><span class="line">mc.age = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(mc.hasOwnProperty(<span class="string">"age"</span>));<span class="comment">//输出true</span></span><br><span class="line"><span class="built_in">console</span>.log(mc.hasOwnProperty(<span class="string">"name"</span>));<span class="comment">//输出false</span></span><br></pre></td></tr></table></figure>
+
+<p>原型对象也是对象，所以它也有原型，</p>
+<p>当我们使用一个对象的属性或方法时，会在自身中寻找，</p>
+<p>自身如果有，则直接使用，</p>
+<p>如果没有则会去原型对象中寻找，如果原型对象中有则使用</p>
+<p>如果没有则去原型的原型中寻找，直到找到Object对象的原型，</p>
+<p>Object对象的原型没有原型，如果在Object中依然没有找到，则返回undefined</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(mc.__proto__.hasOwnProperty(<span class="string">"hasOwnProperty"</span>));<span class="comment">//输出false</span></span><br><span class="line"><span class="built_in">console</span>.log(mc.__proto__.__proto__.hasOwnProperty(<span class="string">"hasOwnProperty"</span>));<span class="comment">//输出true,说明hasOwnProperty在原型的原型中</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -612,19 +729,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">标签</a>
+                <a href="javascript:void(0)" class="js-tag color3">Markdown常用语法</a>
               </li>
             
             <div class="clearfix"></div>
