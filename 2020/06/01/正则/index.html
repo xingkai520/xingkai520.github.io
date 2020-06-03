@@ -16,7 +16,7 @@
 <meta property="og:description" content="正则表达式 正则表达式用于定义一些字符串的规则 计算机可以根据正则表达式，来检查一个字符串是否符合规则 获取字符串中符合规则的内容提取出来">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-01T10:53:27.000Z">
-<meta property="article:modified_time" content="2020-06-01T13:46:51.252Z">
+<meta property="article:modified_time" content="2020-06-02T13:48:10.771Z">
 <meta property="article:author" content="xingkai">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -227,8 +227,109 @@
 <li><p>除了^</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reg = <span class="regexp">/[^ab]/</span>;<span class="comment">//(除了ab有其他的)</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"ab1"</span>));<span class="comment">//输出true(区分大小写)</span></span><br><span class="line">reg = <span class="regexp">/[^0-9]/</span>;<span class="comment">//(除了数字有其他的)</span></span><br></pre></td></tr></table></figure>
 
+
 </li>
 </ul>
+<ul>
+<li><p>将一个字符串拆分为一个数组</p>
+<p>方法中可以传递一个正则表达式作为参数，这样方法将会根据正则表达式去拆分字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1a2b3c4d5f6e7"</span>;</span><br><span class="line"><span class="keyword">var</span> result = str.split(<span class="regexp">/[A-z]/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回1,2,3,4,5,6,7</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>search()</p>
+<ul>
+<li>可以搜索字符串中是否含有指定内容</li>
+<li>如果搜索到指定内容，则会返回第一次出现的索引，如果没有搜索到返回-1</li>
+<li>他可以接受一个正则表达式作为参数，然后会根据正则表达式去检索字符串</li>
+<li>不能全局查找只会查找第一个，即使设计全局匹配也一样</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello abc hello aec afc"</span>;</span><br><span class="line"><span class="keyword">var</span> result = str.search(<span class="string">"abcd"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回-1</span></span><br><span class="line">result = str.search(<span class="string">"abc"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回6</span></span><br><span class="line">comsole.log(str.search(<span class="regexp">/a[bef]c/</span>));<span class="comment">//返回6</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>match()</p>
+<ul>
+<li>可以根据正则表达式，从一个字符串中将符合条件的内容提取出来</li>
+<li>默认情况下我们的match只会找到第一个符合要求的内容，找到后就停止检索，我们可以设置正则表达式为全局匹配模式，这样就会匹配到所有的内容</li>
+<li>可以为一个正则表达式设置多个匹配模式，且顺序无所谓</li>
+<li>match()会将匹配到的内容封装到一个数组中返回，即使只查询到一个结果</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1a2b3c4d5f6eABF"</span>;</span><br><span class="line"><span class="keyword">var</span> result = str.match(<span class="regexp">/[a-z]/g</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回a,b,c,d,e,f</span></span><br><span class="line">result = str.match(<span class="regexp">/[a-z]/ig</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回a,b,c,d,e,f,A,B,F</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>replace()</p>
+<ul>
+<li><p>可以将字符串中指定内容替换为新内容</p>
+</li>
+<li><p>参数：</p>
+<p>1.被替换内容，可以接受一个正则表达式作为参数</p>
+<p>2.新的内容</p>
+</li>
+<li><p>默认只会替换第一个</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1a2a3a4d5f6eABF"</span>;</span><br><span class="line"><span class="keyword">var</span> result = str.replace(<span class="string">"a"</span>,<span class="string">"@_@"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回1@_@2a3a4d5f6eABF</span></span><br><span class="line"><span class="keyword">var</span> result = str.replace(<span class="regexp">/a/g</span>,<span class="string">"@_@"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//返回1@_@2@_@3@_@4d5f6eABF</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>量词</p>
+<ul>
+<li>通过量词可以设置一个内容出现的次数</li>
+<li>量词只对前边的一个内容起作用<ul>
+<li>{n}正好出现n次</li>
+<li>{m,n}出现m-n次</li>
+<li>{m,}出现m次及以上</li>
+<li>+表示至少一个，相当于{1,}</li>
+<li>*表示0个及以上，有没有都行</li>
+<li>？表示0或1个</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a&#123;3&#125;/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"aaabc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/ab&#123;3&#125;/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"abbbc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/(ab)&#123;3&#125;/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"abababbbc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/(ab)&#123;1,3&#125;/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"ababccc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/a&#123;3,&#125;/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"aaaaaaaaaabccc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/ab+c/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"aabccc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/ab*c/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"aaaaaaaaaabccc"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/ab?c/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"aaaaaaaaaabccc"</span>));<span class="comment">//返回true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查一个字符串是否以某个元素开头</p>
+<ul>
+<li><p>^表示开头 [^]表示除了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"abcabc"</span>));<span class="comment">//返回true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$表示结尾</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/$a/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"abcabca"</span>));<span class="comment">//返回true</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a$/</span>;<span class="comment">//只能出现一个a，即开头的a也得是结尾的a</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"a"</span>));<span class="comment">//返回true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>. 表示任意字符</p>
+<ul>
+<li>如果要检测 . 则需要转义字符 \ .   表示  .                   \ \表示\</li>
+<li>在使用构造函数时，由于他的参数是字符转，而\ 是转义字符，如果要用\ 则要用\ \表示</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/./</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"@#$%^"</span>));<span class="comment">//返回true</span></span><br><span class="line">reg = <span class="regexp">/\./</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"@#$%^"</span>));<span class="comment">//返回false</span></span><br><span class="line">reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\."</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"!@$#^"</span>));<span class="comment">//返回false</span></span><br><span class="line"><span class="built_in">console</span>.log(reg);<span class="comment">//返回\.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\字母代表的意思</p>
+<ul>
+<li><p>\w：任意字母、数字、_</p>
+</li>
+<li><p>\W:  除了字母、数字、_</p>
+</li>
+<li><p>\d：任意数字</p>
+</li>
+<li><p>\D：除了数字</p>
+</li>
+<li><p>\s：空格</p>
+</li>
+<li><p>\S：除了空格</p>
+</li>
+<li><p>\b：单词边界</p>
+</li>
+<li><p>\B：除了单词边界(是否是一个独立的单词，也就是检查这个单词两边有没有空格)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/child\b/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"children"</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>去除字符串前后的空格</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"      hel   lo    "</span>;</span><br><span class="line">str = str.replace(<span class="regexp">/^\s*|\s*$/g</span>,<span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -342,6 +443,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/03/DOM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          DOM
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/28/js%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -475,11 +585,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
